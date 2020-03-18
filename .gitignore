@@ -1,0 +1,21 @@
+# Generated files #
+###################
+.project
+.classpath
+.settings
+generated
+.DS_Store
+
+# Gradle files
+build
+.gradle
+
+**/node_modules/*
+
+# Intellij           #
+######################
+.idea
+
+# Project specific   #
+######################
+try-me/*
