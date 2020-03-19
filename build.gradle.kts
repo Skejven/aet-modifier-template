@@ -16,7 +16,7 @@
 
 plugins {
     `java-library`
-    `osgi`
+    id("biz.aQute.bnd.builder")
 }
 
 repositories {
@@ -44,12 +44,9 @@ dependencies {
 
 tasks.withType<Jar>().configureEach {
     manifest {
-        (manifest as? OsgiManifest)?.apply {
-            instruction("Bundle-Vendor", "Skejven corp.")
-            instruction("Bundle-Description", "AET Extension: example-modifier")
-            instruction("Bundle-DocURL", "https://github.com/Skejven/aet-modifier-template")
-            instruction("Service-Component", "OSGI-INF/com.github.aet.modifier.ExampleModifierFactory.xml")
-        }
+        attributes(Pair("Bundle-Vendor", "Skejven corp."))
+        attributes(Pair("Bundle-Description", "AET Extension: example-modifier"))
+        attributes(Pair("Bundle-DocURL", "https://github.com/Skejven/aet-modifier-template"))
     }
 }
 

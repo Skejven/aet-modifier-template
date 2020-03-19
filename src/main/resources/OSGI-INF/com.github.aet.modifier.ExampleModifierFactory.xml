@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.github.aet.modifier.ExampleModifierFactory" activate="activate">
-  <implementation class="com.github.aet.modifier.ExampleModifierFactory"/>
-  <service>
-    <provide interface="com.cognifide.aet.job.api.collector.CollectorFactory"/>
-  </service>
-  <property name="defaultColor" type="String" value=""/>
-</scr:component>
