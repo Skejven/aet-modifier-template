@@ -1,0 +1,11 @@
+<features
+  name="AET healthcheck features"
+  xmlns="http://karaf.apache.org/xmlns/features/v1.3.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.3.0 http://karaf.apache.org/xmlns/features/v1.3.0">
+
+  <feature name="aet-kotlin" version="0.6.0" description="AET kotlin" install="auto">
+    <bundle>mvn:org.jetbrains.kotlin/kotlin-osgi-bundle/1.3.70</bundle>
+  </feature>
+
+</features>

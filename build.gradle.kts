@@ -16,6 +16,7 @@
 
 plugins {
     `java-library`
+    `kotlin-dsl`
     id("biz.aQute.bnd.builder")
 }
 
