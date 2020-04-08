@@ -19,7 +19,7 @@ import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.AttributeType;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
-@ObjectClassDefinition(name = "AET Lighthouse Collector Factory", description = "AET Lighthouse Collector Factory")
+@ObjectClassDefinition(name = "AET Example Modifier Factory", description = "AET Example Modifier Factory Config")
 public @interface ExampleCollectorFactoryConf {
 
   @AttributeDefinition(
