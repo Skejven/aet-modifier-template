@@ -35,9 +35,8 @@ class AnotherModifierFactory : CollectorFactory {
 
     override fun getName() = "another"
 
-    override fun createInstance(properties: CollectorProperties, parameters: MutableMap<String, String>, webCommunicationWrapper: WebCommunicationWrapper): CollectorJob {
-        val modifier = ExampleModifier(webCommunicationWrapper.webDriver, config.defaultColor)
-        modifier.setParameters(parameters)
-        return modifier
-    }
+    override fun createInstance(properties: CollectorProperties, parameters: MutableMap<String, String>, webCommunicationWrapper: WebCommunicationWrapper): CollectorJob =
+            ExampleModifier(webCommunicationWrapper.webDriver, config.defaultColor).apply {
+                setParameters(parameters)
+            }
 }

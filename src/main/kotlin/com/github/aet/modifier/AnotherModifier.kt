@@ -9,14 +9,18 @@ import org.slf4j.LoggerFactory
 
 class AnotherModifier(private val webDriver: WebDriver, private val defaultColor: String) : CollectorJob {
 
-    private var color: String = defaultColor
+    private var color = defaultColor
 
     override fun collect(): CollectorStepResult {
         var result: CollectorStepResult
         try {
             LOGGER.trace("Example modifier will apply {} bg colour", color)
             val command = String.format(EXAMPLE_CHANGE_BACKGROUND_MODIFICATION, color)
-            (webDriver as JavascriptExecutor).executeScript(command)
+            if (webDriver is JavascriptExecutor) {
+                webDriver.executeScript(command)
+            } else {
+                throw RuntimeException("Provided webdriver is not a JavascriptExecutor")
+            }
             result = CollectorStepResult.newModifierResult()
         } catch (e: Exception) {
             val message = String.format("Can't execute JavaScript command. Error: %s ", e.message)
