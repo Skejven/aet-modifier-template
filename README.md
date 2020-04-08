@@ -1,12 +1,53 @@
 # AET Modifier template
 
-> Work in progress...
+This repository contains code of a sample [AET Modifier](https://github.com/Cognifide/aet/wiki/Modifiers).
+AET use modifiers to achieve certain conditions before collecting the data (precisely: modifiers are
+collectors which use webdriver to perform some actions, bug simply do not collect any data).
 
-## How to build
+## Creating new Modifier
+
+All AET Modifiers implement [`CollectorJob`](https://github.com/Cognifide/aet/blob/master/api/jobs-api/src/main/java/com/cognifide/aet/job/api/collector/CollectorJob.java)
+interface. To create a Modifier in AET instance, you will need [`CollectorFactory`](https://github.com/Cognifide/aet/blob/master/api/jobs-api/src/main/java/com/cognifide/aet/job/api/collector/CollectorFactory.java) that provides a new instance of Modifier each time it is required. It also equips Modifier
+with WebDriver - so that it can interact with the browser.
+
+You can see the example code in [this repository](https://github.com/Skejven/aet-modifier-template/tree/master/src/main/java/com/github/aet/modifier). 
+More code examples are in the [AET core Modifiers](https://github.com/Cognifide/aet/tree/master/core/jobs/src/main/java/com/cognifide/aet/job/common/modifiers).
+
+## Repo structure
+
+```
+.
+├── conf
+│   └── com.github.aet.modifier.ExampleModifier.cfg
+├── misc
+│   └── suite.xml
+└── src
+```
+
+- `conf` contains OSGi configuration file for the modifier
+- `misc` contains sample suite that can be use to run the test with modifier
+- `src` contains code of the modifier, its factory and config (currently only Java version is available)
+
+## How to develop a custom modifier
+
+Choose one of the options:
+- [download ZIP](https://github.com/Skejven/aet-modifier-template/archive/master.zip)
+- [use this repo as a template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
+
+Hack the modifier's code, rename it do whatever you need using webdriver.
+Remember to give your modifier a [unique name](https://github.com/Cognifide/aet/blob/master/api/jobs-api/src/main/java/com/cognifide/aet/job/api/collector/CollectorFactory.java#L33).
+With that name it will be triggered when AET test collection phase is processed, e.g.
+- When you name your component `my-custom-mod` you will call it with `<my-custom-mod>` from the suite (see the `<example>` in this repo).
+
+Build and deploy it following instructions below.
+
+### How to build
 
 Run `./gradlew build`.
 
-## How to deploy on local dev environment
+This will produce `jar` in the `build/libs` as well as compress the config file to `build/distributions`.
+
+### How to deploy on local dev environment
 
 Run `./setup.sh`.
 This script will create `try-me` directory with:
