@@ -51,9 +51,14 @@ tasks.withType<Jar>().configureEach {
     }
 }
 
+val assembleFeatures = tasks.register<Zip>("assembleFeatures") {
+    archiveName = "${project.name}-features.zip"
+    from("features")
+}
+
 val assembleConfigs = tasks.register<Zip>("assembleConfigs") {
-    archiveName = "aet-example-modifier.zip"
+    archiveName = "${project.name}-config.zip"
     from("conf")
 }
 
-tasks.named("build") { finalizedBy(assembleConfigs) }
+tasks.named("build") { finalizedBy(assembleFeatures, assembleConfigs) }
