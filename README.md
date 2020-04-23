@@ -91,3 +91,7 @@ When the instance is up (see details in the [AET Doker instance setup guide](htt
 From the `tests` directory run `./aet.sh http://localhost:8181`.
 
 Every time you change the code/config of the custom module, simply run `./deploy.sh` and wait a moment for the instance to update (changes are auto-discovered by Karaf).
+
+### Tutorial
+To see a more detailed description on how to use this modifier template, please refer to this article:
+- [Creating a new Modifier in AET](https://tech.cognifide.com/blog/2020/creating-a-new-modifier-in-aet/)
